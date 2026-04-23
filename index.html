@@ -1,129 +1,155 @@
-<!DOCTYPE html>
+
 <html>
 <head>
-<link rel="icon" type="image/webp" href = "C:\Users\Vivek\Desktop\experiantial learning\Date_Mon.webp">
 
 <title>Virtual Chemistry Lab</title>
+
 <style>
-  
-  body { 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-    background: linear-gradient(135deg, #e0f7fa, #fce4ec); 
-    text-align: center; 
-    padding: 20px;
-    line-height: 1.6;
-  }
 
-  h1 { color: #4a148c; margin-bottom: 5px; font-size: 32px; letter-spacing: -1px; }
+body { 
+  font-family: Arial, sans-serif; 
+  background: linear-gradient(to right, lightblue, lightpink); 
+  text-align: center; 
+  padding: 15px;
+}
 
-  
-  .log-bar { 
-    background: #ffffff; 
-    padding: 15px; 
-    border-radius: 15px; 
-    display: inline-block; 
-    margin-bottom: 25px; 
-    border: 1px solid #ddd;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  }
-  .log-bar input { padding: 8px; border-radius: 5px; border: 1px solid #ccc; margin: 0 5px; }
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
 
- 
-  .shelf { 
-    display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; 
-    background: #fff8e1; border: 2px solid #ffca28; 
-    border-radius: 20px; padding: 25px; margin-bottom: 30px; 
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-  }
-  
-  .chemical { 
-    border-radius: 20px; padding: 10px 20px; cursor: grab; 
-    font-weight: 600; font-size: 14px; border: 2px solid transparent;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  .chemical:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
-  .chemical:active { cursor: grabbing; opacity: 0.6; }
+h1 { 
+  color: darkblue; 
+  font-size: 28px; 
+}
 
-  
-  .c1 { background: #ffcdd2; color: #c62828; border-color: #e53935; }
-  .c2 { background: #bbdefb; color: #1565c0; border-color: #1e88e5; }
-  .c3 { background: #c8e6c9; color: #2e7d32; border-color: #43a047; }
-  .c4 { background: #fff9c4; color: #f57f17; border-color: #fbc02d; }
-  .c5 { background: #f3e5f5; color: #6a1b9a; border-color: #8e24aa; }
-  .c6 { background: #ffe0b2; color: #e65100; border-color: #fb8c00; }
+.log-bar { 
+  background: white; 
+  padding: 12px; 
+  border-radius: 10px; 
+  border: 1px solid lightgray;
+  box-shadow: 2px 2px 8px gray;
+}
 
-  
-  .workbench { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 30px; }
-  
-  .drop-zone { 
-    width: 160px; min-height: 200px; border-radius: 20px; 
-    padding: 20px; border: 3px dashed;
-    transition: all 0.3s ease;
-    background: white;
-  }
-  .drop-zone:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-  
-  .za { border-color: #f48fb1; }
-  .zb { border-color: #90caf9; }
-  .zc { border-color: #a5d6a7; }
+.log-bar input { 
+  padding: 6px; 
+  border-radius: 4px; 
+  border: 1px solid gray; 
+}
 
-  .drop-zone h3 { font-size: 16px; margin-bottom: 10px; }
-  .za h3 { color: #c2185b; }
-  .zb h3 { color: #1565c0; }
-  .zc h3 { color: #2e7d32; }
+.shelf { 
+  display: flex; 
+  justify-content: center; 
+  flex-wrap: wrap; 
+  gap: 10px; 
+  background: lightyellow; 
+  border: 2px solid orange; 
+  border-radius: 12px; 
+  padding: 15px; 
+}
 
-  .hint { color: #aaa; font-size: 12px; margin-top: 10px; }
+.chemical { 
+  border-radius: 10px; 
+  padding: 8px 15px; 
+  cursor: grab; 
+  font-weight: bold; 
+  border: 1px solid gray;
+}
 
- 
-  button { 
-    padding: 10px 20px; border-radius: 20px; border: none; 
-    background: #4a148c; color: white; cursor: pointer;
-    font-weight: bold; transition: 0.3s;
-  }
-  button:hover { background: #6a1b9a; transform: scale(1.05); }
-  .reset-btn { background: #d32f2f; margin-top: 20px; }
+.c1 { background: lightpink; color: darkred; }
+.c2 { background: lightblue; color: navy; }
+.c3 { background: lightgreen; color: darkgreen; }
+.c4 { background: khaki; color: brown; }
+.c5 { background: lavender; color: purple; }
+.c6 { background: peachpuff; color: chocolate; }
+
+.workbench { 
+  display: flex; 
+  justify-content: center; 
+  gap: 30px;
+}
+
+.drop-zone { 
+  width: 150px; 
+  height: 200px; 
+  border-radius: 10px; 
+  padding: 10px; 
+  border: 2px dashed gray;
+  background: white;
+  box-shadow: 2px 2px 8px lightgray;
+}
+
+.za { border-color: pink; }
+.zb { border-color: lightblue; }
+.zc { border-color: lightgreen; }
+
+.drop-zone h3 { 
+  font-size: 15px; 
+}
+
+button { 
+  padding: 8px 15px; 
+  border-radius: 10px; 
+  border: none; 
+  background: darkblue; 
+  color: white; 
+  cursor: pointer;
+}
+
+.reset-btn { 
+  background: red; 
+}
+
 </style>
 </head>
+
 <body>
 
-  <h1>Virtual Chemistry Lab</h1>
+<h1>Virtual Chemistry Lab</h1>
+
+<div class="container">
 
   <div class="log-bar">
     <form onsubmit="alert('Data Recorded!'); return false;">
       <input type="text" placeholder="Name" required>
       <input type="text" placeholder="Roll No" required>
-      <input type="text" placeholder="Section" size="10" required>
+      <input type="text" placeholder="Section" required>
       <button type="submit">Submit</button>
       <button type="reset">Clear</button>
     </form>
   </div>
 
   <div class="shelf">
-    <div class="chemical c1"draggable="true">HCl (Acid)</div>
-    <div class="chemical c2"draggable="true">NaOH (Base)</div>
-    <div class="chemical c3"draggable="true">H₂O (Water)</div>
-    <div class="chemical c4"draggable="true">H₂O₂ (Peroxide)</div>
-    <div class="chemical c5"draggable="true">NaCl (Salt)</div>
-    <div class="chemical c6"draggable="true">EtOH (Ethanol)</div>
+    <div class="chemical c1" draggable="true">HCl (Acid)</div>
+    <div class="chemical c2" draggable="true">NaOH (Base)</div>
+    <div class="chemical c3" draggable="true">H₂O (Water)</div>
+    <div class="chemical c4" draggable="true">H₂O₂ (Peroxide)</div>
+    <div class="chemical c5" draggable="true">NaCl (Salt)</div>
+    <div class="chemical c6" draggable="true">EtOH (Ethanol)</div>
   </div>
 
-<div class="workbench">
-  <div class="drop-zone za">
-    <h3>Beaker A</h3>
-    <img src="C:\Users\Vivek\Desktop\experiantial learning\bebu.png" alt="Vector Beaker" width="80">
+  <div class="workbench">
+    <div class="drop-zone za">
+      <h3>Beaker A</h3>
+      <img src="C:\Users\Vivek\Desktop\experiantial learning\bebu.png" width="80">
+    </div>
+
+    <div class="drop-zone zb">
+      <h3>Beaker B</h3>
+      <img src="C:\Users\Vivek\Desktop\experiantial learning\bebu.png" width="80">
+    </div>
+
+    <div class="drop-zone zc">
+      <h3>Flask C</h3>
+      <img src="C:\Users\Vivek\Desktop\experiantial learning\bebu2.png" width="100">
+    </div>
   </div>
 
-  <div class="drop-zone zb">
-    <h3>Beaker B</h3>
-    <img src="C:\Users\Vivek\Desktop\experiantial learning\bebu.png" alt="Vector Beaker" width="80">
-  </div>
-
-  <div class="drop-zone zc">
-    <h3>Flask C</h3>
-    <img src="C:\Users\Vivek\Desktop\experiantial learning\bebu2.png" alt="Vector Flask" width="100" height="120">
-  </div>
 </div>
-  <a href=""><button class="reset-btn">Reset Entire Experiment</button></a>
+
+<button class="reset-btn">Reset Entire Experiment</button>
 
 </body>
 </html>
