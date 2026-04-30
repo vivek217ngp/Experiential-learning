@@ -1,155 +1,60 @@
 
 <html>
 <head>
-
-<title>Virtual Chemistry Lab</title>
-
-<style>
-
-body { 
-  font-family: Arial, sans-serif; 
-  background: linear-gradient(to right, lightblue, lightpink); 
-  text-align: center; 
-  padding: 15px;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
-
-h1 { 
-  color: darkblue; 
-  font-size: 28px; 
-}
-
-.log-bar { 
-  background: white; 
-  padding: 12px; 
-  border-radius: 10px; 
-  border: 1px solid lightgray;
-  box-shadow: 2px 2px 8px gray;
-}
-
-.log-bar input { 
-  padding: 6px; 
-  border-radius: 4px; 
-  border: 1px solid gray; 
-}
-
-.shelf { 
-  display: flex; 
-  justify-content: center; 
-  flex-wrap: wrap; 
-  gap: 10px; 
-  background: lightyellow; 
-  border: 2px solid orange; 
-  border-radius: 12px; 
-  padding: 15px; 
-}
-
-.chemical { 
-  border-radius: 10px; 
-  padding: 8px 15px; 
-  cursor: grab; 
-  font-weight: bold; 
-  border: 1px solid gray;
-}
-
-.c1 { background: lightpink; color: darkred; }
-.c2 { background: lightblue; color: navy; }
-.c3 { background: lightgreen; color: darkgreen; }
-.c4 { background: khaki; color: brown; }
-.c5 { background: lavender; color: purple; }
-.c6 { background: peachpuff; color: chocolate; }
-
-.workbench { 
-  display: flex; 
-  justify-content: center; 
-  gap: 30px;
-}
-
-.drop-zone { 
-  width: 150px; 
-  height: 200px; 
-  border-radius: 10px; 
-  padding: 10px; 
-  border: 2px dashed gray;
-  background: white;
-  box-shadow: 2px 2px 8px lightgray;
-}
-
-.za { border-color: pink; }
-.zb { border-color: lightblue; }
-.zc { border-color: lightgreen; }
-
-.drop-zone h3 { 
-  font-size: 15px; 
-}
-
-button { 
-  padding: 8px 15px; 
-  border-radius: 10px; 
-  border: none; 
-  background: darkblue; 
-  color: white; 
-  cursor: pointer;
-}
-
-.reset-btn { 
-  background: red; 
-}
-
-</style>
+  <title>Virtual Chemistry Lab</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <h1>Virtual Chemistry Lab</h1>
 
-<div class="container">
+<div class="log-bar">
+  <form onsubmit="submitData(event)">
+    <input type="text" id="name" placeholder="Name" required>
+    <input type="text" id="roll" placeholder="Roll No" required>
+    <input type="text" id="section" placeholder="Section" required>
+    <button type="submit">Submit</button>
+    <button type="reset">Clear</button>
+  </form>
+</div>
 
-  <div class="log-bar">
-    <form>
-      <input type="text" placeholder="Name" required>
-      <input type="text" placeholder="Roll No" required>
-      <input type="text" placeholder="Section" required>
-      <button type="submit">Submit</button>
-      <button type="reset">Clear</button>
-    </form>
+<div class="shelf">
+  <div class="chemical c1" draggable="true" id="HCl">HCl (Acid)</div>
+  <div class="chemical c2" draggable="true" id="NaOH">NaOH (Base)</div>
+  <div class="chemical c3" draggable="true" id="Water">H₂O (Water)</div>
+  <div class="chemical c4" draggable="true" id="Peroxide">H₂O₂ (Peroxide)</div>
+  <div class="chemical c5" draggable="true" id="Salt">NaCl (Salt)</div>
+  <div class="chemical c6" draggable="true" id="Ethanol">EtOH (Ethanol)</div>
+</div>
+
+<div class="workbench">
+
+  <div class="drop-zone" ondragover="allowDrop(event)" ondrop="drop(event)">
+    <h3>Beaker A</h3>
+    <img src="bebu.png" width="80">
+    <div class="result"></div>
   </div>
 
-  <div class="shelf">
-    <div class="chemical c1" draggable="true">HCl (Acid)</div>
-    <div class="chemical c2" draggable="true">NaOH (Base)</div>
-    <div class="chemical c3" draggable="true">H₂O (Water)</div>
-    <div class="chemical c4" draggable="true">H₂O₂ (Peroxide)</div>
-    <div class="chemical c5" draggable="true">NaCl (Salt)</div>
-    <div class="chemical c6" draggable="true">EtOH (Ethanol)</div>
+  <div class="drop-zone" ondragover="allowDrop(event)" ondrop="drop(event)">
+    <h3>Beaker B</h3>
+    <img src="bebu.png" width="80">
+    <div class="result"></div>
   </div>
 
-  <div class="workbench">
-    <div class="drop-zone za">
-      <h3>Beaker A</h3>
-      <img src="C:\Users\Vivek\Desktop\experiantial learning\bebu.png" width="80">
-    </div>
-
-    <div class="drop-zone zb">
-      <h3>Beaker B</h3>
-      <img src="C:\Users\Vivek\Desktop\experiantial learning\bebu.png" width="80">
-    </div>
-
-    <div class="drop-zone zc">
-      <h3>Flask C</h3>
-      <img src="C:\Users\Vivek\Desktop\experiantial learning\bebu2.png" width="100">
-    </div>
+  <div class="drop-zone" ondragover="allowDrop(event)" ondrop="drop(event)">
+    <h3>Flask C</h3>
+    <img src="bebu2.png" width="100">
+    <div class="result"></div>
   </div>
 
 </div>
 
-<button class="reset-btn">Reset Entire Experiment</button>
+<button class="reset-btn" onclick="resetExperiment()">
+  Reset Entire Experiment
+</button>
+
+<script src="script.js"></script>
 
 </body>
 </html>
