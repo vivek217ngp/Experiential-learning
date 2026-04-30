@@ -1,0 +1,73 @@
+body{
+  font-family:Arial;
+  background:linear-gradient(to right, lightblue, pink);
+  text-align:center;
+  padding:15px;
+}
+
+h1{color:darkblue;}
+
+.log-bar, .shelf, .drop-zone{
+  background:white;
+  border-radius:10px;
+  padding:10px;
+  margin:10px;
+}
+
+.log-bar{display:inline-block;}
+
+.shelf{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  background:lightyellow;
+  border:2px solid orange;
+}
+
+.chemical{
+  padding:8px 12px;
+  border-radius:8px;
+  font-weight:bold;
+  cursor:grab;
+  border:1px solid gray;
+}
+
+.c1{background:lightpink;}
+.c2{background:lightblue;}
+.c3{background:lightgreen;}
+.c4{background:khaki;}
+.c5{background:lavender;}
+.c6{background:peachpuff;}
+
+.workbench{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+}
+
+.drop-zone{
+  width:150px;
+  height:230px;
+  border:2px dashed gray;
+  overflow-y:auto;
+}
+
+button{
+  padding:8px 15px;
+  border:none;
+  border-radius:8px;
+  background:darkblue;
+  color:white;
+  cursor:pointer;
+}
+
+.reset-btn{background:red;}
+
+.result{
+  margin-top:8px;
+  font-weight:bold;
+  color:darkgreen;
+}
+
+input{padding:6px;}
